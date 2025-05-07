@@ -1,18 +1,18 @@
-import { usernameController, searchController } from "./controller.js";
-
 import express from "express";
+
+import router from "./route.js";
 
 const app = express();
 const PORT = 3000;
-//Define a simple route
 app.get("/", (req, res) => {
-  res.send("Hello, !");
+  res.send("Hello World!");
+});
+app.use('/user', router);
+app.post('/user',()=>{
+  const {name , email} =req.body
 })
 
-app.get("/user/:username", usernameController);
-
-app.get("/search", searchController);
-
+// app.get("/user/signup", userSignup);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
