@@ -8,11 +8,15 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 app.use('/user', router);
-app.post('/user',()=>{
+
+app.post('/users',express.json(),(req,res)=>{
   const {name , email} =req.body
+  res.json({
+    massage:`User ${name}with email ${email} created successfully`
+  })
 })
 
-// app.get("/user/signup", userSignup);
+// Middleware to parse JSON bodies
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
