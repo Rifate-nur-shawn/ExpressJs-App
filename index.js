@@ -15,9 +15,24 @@ app.post('/users',express.json(),(req,res)=>{
     massage:`User ${name}with email ${email} created successfully`
   })
 })
+app.get('/things/:name/:id',(req,res)=>{
+  const {name,id}=req.params
+    res.json({
+      id,
+      name
+    })
+})
+// app.delete ('')
 
 // Middleware to parse JSON bodies
 
+// app.put('/users/:id', (req, res) => {
+//   const  userId=req.params.id
+//   const { name, email } = req.body;
+//   res.json({
+//     message: `User with ID ${userId} updated successfully with name ${name},  ${email}`
+//   }); 
+// });
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
