@@ -27,12 +27,19 @@ app.post("/person", async (req, res) => {
 app.put("/person",  async (req, res) => {
   const { id} = req.body;
 
-  const personData =await Person.findById(id);
+  const personData =await Person.findByIdAndUpdate(id,{age:"28"});
   personData.age =30
   personData.save();
 
   console.log(personData)
   res.send("Person data updated");
+});
+//Deleting data in mongoDb
+
+app.delete("/person/:id", async (req, res) => {
+  const { id } = req.params;
+  await Person.findByIdAndDelete(id);
+  res.send("Person data deleted");
 });
 
 
